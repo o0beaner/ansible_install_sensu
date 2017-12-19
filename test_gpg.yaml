@@ -4,4 +4,6 @@
 
   tasks:
     - name: Install Sensu GPG Key
-      shell: wget -q https://sensu.global.ssl.fastly.net/apt/pubkey.gpg -O- | sudo apt-key add -
+      apt_key:
+        url: https://sensu.global.ssl.fastly.net/apt/pubkey.gpg
+        state:present
