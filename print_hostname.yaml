@@ -5,4 +5,4 @@
   tasks:
 
     - debug:
-      msg: "System {{ inventory_hostname }} has a local hostname of {{ ansible_nodename }}"
+        msg: "System {{ inventory_hostname }} has a local hostname of {{ ansible_nodename }}"
