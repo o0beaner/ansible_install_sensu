@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+
+  tasks:
+    - name: Enable and start Sensu
+      systemd:
+        state: started
+        enabled: yes
