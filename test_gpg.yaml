@@ -6,4 +6,4 @@
     - name: Install Sensu GPG Key
       apt_key:
         url: https://sensu.global.ssl.fastly.net/apt/pubkey.gpg
-        state:present
+        state: present
