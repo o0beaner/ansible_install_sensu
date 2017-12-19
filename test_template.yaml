@@ -1,0 +1,8 @@
+---
+
+- hosts: all
+
+  tasks:
+    - template:
+        src:
+        dest: /etc/sensu/conf.d/client.json

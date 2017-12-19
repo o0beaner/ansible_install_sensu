@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+
+  tasks:
+    - name: Install Sensu Repo
+      shell: |
+        . /etc/lsb-release
+        sudo echo "deb     https://sensu.global.ssl.fastly.net/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/sensu.list

@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+
+  tasks:
+    - name: Install Sensu
+      shell: |
+        sudo apt-get update
+        sudo apt-get install sensu nagios-plugins

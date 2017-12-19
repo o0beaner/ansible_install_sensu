@@ -1,0 +1,9 @@
+---
+
+- hosts: all
+
+  tasks:
+    - copy:
+        src: files/rabbitmq.json
+        dest: /etc/sensu/conf.d/rabbitmq.json
+        
