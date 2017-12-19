@@ -5,6 +5,6 @@
   tasks:
     - name: Enable and start Sensu
       service:
-        name: sensu
+        name: sensu-client
         state: started
         enabled: yes
