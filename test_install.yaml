@@ -3,7 +3,16 @@
 - hosts: all
 
   tasks:
+    - name: Update Apt Cache
+      apt:
+        update_cache: yes
+
     - name: Install Sensu
-      shell: |
-        sudo apt-get update
-        sudo apt-get install sensu nagios-plugins
+      apt:
+        pkg: sensu
+        state: latest
+
+    - name: Install Nagios Plugins
+      apt:
+        pkg: nagios-plugins
+        state: latest
