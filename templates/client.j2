@@ -1,6 +1,6 @@
 {
  "client": {
-   "name": "{{ inventory_hostname }}",
+   "name": "{{ ansible_hostname }}",
    "address": "{{ ansible_default_ipv4.address }}",
    "subscriptions": [ "all","ubuntu-hosts" ],
    "safe_mode":false
