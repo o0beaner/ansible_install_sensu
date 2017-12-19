@@ -4,6 +4,6 @@
 
   tasks:
     - name: Enable and start Sensu
-      systemd:
+      service:
         state: started
         enabled: yes
