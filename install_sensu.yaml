@@ -4,23 +4,41 @@
 
   tasks:
     - name: Install Sensu GPG Key
-      shell: wget -q https://sensu.global.ssl.fastly.net/apt/pubkey.gpg -O- | sudo apt-key add -
+      apt_key:
+        url: https://sensu.global.ssl.fastly.net/apt/pubkey.gpg
+        state: present
 
     - name: Install Sensu Repo
       shell: |
         . /etc/lsb-release
         sudo echo "deb     https://sensu.global.ssl.fastly.net/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/sensu.list
 
+    - name: Update Apt Cache
+      apt:
+        update_cache: yes
+
     - name: Install Sensu
-      shell: |
-        sudo apt-get update
-        sudo apt-get install sensu nagios-plugins
+      apt:
+        pkg: sensu
+        state: latest
 
-    - template:
-        src:
-        dest: /etc/sensu/conf.d/client.json
+    - name: Install Nagios Plugins
+      apt:
+        pkg: nagios-plugins
+        state: latest
 
-    - copy:
+    - name: Copying rabbitmq config file to client
+      copy:
         src: files/rabbitmq.json
         dest: /etc/sensu/conf.d/rabbitmq.json
-        
+
+    - name: Creating client config from template
+      template:
+        src: templates/client.j2
+        dest: /etc/sensu/conf.d/client.json
+
+    - name: Enable and start Sensu
+      service:
+        name: sensu-client
+        state: started
+        enabled: yes
