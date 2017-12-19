@@ -1,7 +1,7 @@
 {
  "client": {
-   "name": "fj-hydra",
-   "address": "10.250.0.43",
+   "name": "{{ ansible_nodename }}",
+   "address": "{{ ansible_default_ipv4.address }}",
    "subscriptions": [ "all","ubuntu-hosts" ],
    "safe_mode":false
  }
